@@ -1,0 +1,67 @@
+# GAT model configuration
+model:
+  type: "gat"
+  input_dim: 5
+  hidden_dim: 64
+  output_dim: 2
+  num_layers: 3
+  dropout: 0.1
+  use_residual: true
+
+# Training configuration
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 1e-5
+  num_epochs: 150
+  patience: 25
+  gradient_clip_norm: 1.0
+
+# Data configuration
+data:
+  num_samples: 1500
+  num_particles: 75
+  dim: 2
+  interaction_type: "gravitational"
+  sequence_length: 25
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+
+# Physics simulation parameters
+physics:
+  dt: 0.01
+  gravity: 9.81
+  spring_constant: 1.0
+  damping: 0.99
+  boundary_size: 12.0
+
+# Evaluation configuration
+evaluation:
+  rollout_steps: 75
+  stability_steps: 1500
+  num_eval_samples: 15
+
+# Device configuration
+device:
+  auto_detect: true
+  cuda: true
+  mps: true
+  cpu: true
+
+# Logging configuration
+logging:
+  log_dir: "logs"
+  log_level: "INFO"
+  use_wandb: false
+  use_tensorboard: true
+
+# Checkpointing
+checkpoints:
+  save_dir: "checkpoints"
+  save_best: true
+  save_last: true
+  save_every: 15
+
+# Reproducibility
+seed: 42
